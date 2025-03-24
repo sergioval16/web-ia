@@ -195,6 +195,8 @@ parallaxItems.forEach(item => {
 // Testimonial slider
 const dots = document.querySelectorAll('.dot');
 const slides = document.querySelectorAll('.testimonial-slide');
+const prevArrow = document.querySelector('.testimonial-arrow.prev');
+const nextArrow = document.querySelector('.testimonial-arrow.next');
 let currentSlide = 0;
 
 function showSlide(index) {
@@ -244,9 +246,30 @@ function initSlides() {
 // Llamar a initSlides cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', initSlides);
 
+// Eventos para las flechas de navegación
+if (prevArrow) {
+    prevArrow.addEventListener('click', () => {
+        stopTestimonialRotation();
+        let prevSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevSlide);
+        startTestimonialRotation();
+    });
+}
+
+if (nextArrow) {
+    nextArrow.addEventListener('click', () => {
+        stopTestimonialRotation();
+        let nextSlide = (currentSlide + 1) % slides.length;
+        showSlide(nextSlide);
+        startTestimonialRotation();
+    });
+}
+
 dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
+        stopTestimonialRotation();
         showSlide(i);
+        startTestimonialRotation();
     });
 });
 
@@ -556,6 +579,68 @@ document.addEventListener('DOMContentLoaded', function() {
             item.classList.toggle('active');
         });
     });
+});
+
+// Animación para la sección de proceso
+function initProcessAnimation() {
+    const processStepsLeft = document.querySelectorAll('.process-left .process-step');
+    const processStepsRight = document.querySelectorAll('.process-right .process-step');
+    
+    // Crear un nuevo Intersection Observer
+    const processObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Si el elemento es visible en el viewport
+            if (entry.isIntersecting) {
+                // Añadir la clase visible con un retraso escalonado
+                const step = entry.target;
+                const index = step.getAttribute('data-step');
+                
+                setTimeout(() => {
+                    step.classList.add('visible');
+                }, index * 200); // Retraso escalonado basado en el índice
+                
+                // Dejar de observar una vez que se ha aplicado la animación
+                processObserver.unobserve(step);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // El elemento será visible cuando al menos el 15% esté en el viewport
+    });
+    
+    // Observar cada paso del proceso
+    processStepsLeft.forEach(step => {
+        processObserver.observe(step);
+    });
+    
+    processStepsRight.forEach(step => {
+        processObserver.observe(step);
+    });
+    
+    // Botones "Show more"
+    const showMoreButtons = document.querySelectorAll('.show-more');
+    showMoreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const stepContent = this.closest('.process-step');
+            const expandedContent = stepContent.querySelector('.expanded-content');
+            
+            if (expandedContent) {
+                if (expandedContent.style.maxHeight) {
+                    expandedContent.style.maxHeight = null;
+                    this.innerHTML = 'Show more <i class="fas fa-chevron-down"></i>';
+                } else {
+                    expandedContent.style.maxHeight = expandedContent.scrollHeight + 'px';
+                    this.innerHTML = 'Show less <i class="fas fa-chevron-up"></i>';
+                }
+            }
+        });
+    });
+}
+
+// Inicializar la animación del proceso cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', function() {
+    initProcessAnimation();
 });
 
 // Document ready
