@@ -201,14 +201,22 @@ function showSlide(index) {
     slides.forEach((slide, i) => {
         if (i === index) {
             slide.style.display = 'block';
-            slide.style.opacity = '1';
-            slide.style.transform = 'translateY(0)';
+            // Pequeña pausa antes de mostrar la animación
+            setTimeout(() => {
+                slide.classList.add('active');
+                slide.style.opacity = '1';
+                slide.style.transform = 'translateY(0)';
+            }, 50);
         } else {
+            slide.classList.remove('active');
             slide.style.opacity = '0';
             slide.style.transform = 'translateY(30px)';
+            // Ocultar el slide después de que termine la animación
             setTimeout(() => {
-                slide.style.display = 'none';
-            }, 500);
+                if (!slide.classList.contains('active')) {
+                    slide.style.display = 'none';
+                }
+            }, 1000);
         }
     });
     
@@ -222,6 +230,19 @@ function showSlide(index) {
     
     currentSlide = index;
 }
+
+// Inicializar el primer slide
+function initSlides() {
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+        slides[0].style.display = 'block';
+        slides[0].style.opacity = '1';
+        slides[0].style.transform = 'translateY(0)';
+    }
+}
+
+// Llamar a initSlides cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', initSlides);
 
 dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {

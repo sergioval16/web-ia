@@ -572,29 +572,56 @@ header.scrolled {
 }
 
 .testimonial-slider {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 30px;
-    overflow-x: hidden;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    overflow: hidden;
 }
 
 .testimonial-slide {
-    flex: 0 0 calc(50% - 15px);
-    min-width: 300px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+    display: none;
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    display: block;
 }
 
 .testimonial-content {
     background-color: var(--dark-surface-2);
     border-radius: 15px;
-    padding: 30px;
+    padding: 40px;
     height: 100%;
     position: relative;
-    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-content:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-quote {
+    margin-bottom: 20px;
+}
+
+.testimonial-quote i {
+    font-size: 2rem;
+    background: linear-gradient(90deg, var(--primary-light), var(--secondary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.7;
 }
 
 .testimonial-content p {
@@ -602,12 +629,21 @@ header.scrolled {
     color: var(--text-primary);
     margin-bottom: 20px;
     font-style: italic;
+    line-height: 1.6;
 }
 
 .testimonial-author {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-top: 20px;
+}
+
+.testimonial-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .author-info h4 {
@@ -616,7 +652,7 @@ header.scrolled {
     margin-bottom: 5px;
 }
 
-.author-info p {
+.author-info span {
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin: 0;
@@ -627,6 +663,7 @@ header.scrolled {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .dot {
@@ -636,7 +673,7 @@ header.scrolled {
     background-color: var(--text-secondary);
     opacity: 0.5;
     cursor: pointer;
-    transition: all var(--transition-medium);
+    transition: all 0.3s ease;
 }
 
 .dot.active {
