@@ -250,22 +250,54 @@ dots.forEach((dot, i) => {
     });
 });
 
-// Auto slide change
-function autoSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
+// Auto-rotación de testimoniales
+let testimonialInterval;
+
+function startTestimonialRotation() {
+    testimonialInterval = setInterval(() => {
+        let nextSlide = (currentSlide + 1) % slides.length;
+        showSlide(nextSlide);
+    }, 5000); // Cambiar cada 5 segundos
 }
 
-let slideInterval = setInterval(autoSlide, 5000);
+function stopTestimonialRotation() {
+    clearInterval(testimonialInterval);
+}
 
-// Pause auto slide on hover
+// Iniciar rotación automática
+startTestimonialRotation();
+
+// Detener rotación al hacer hover en los testimoniales
 const testimonialSlider = document.querySelector('.testimonial-slider');
-testimonialSlider.addEventListener('mouseenter', () => {
-    clearInterval(slideInterval);
-});
+if (testimonialSlider) {
+    testimonialSlider.addEventListener('mouseenter', stopTestimonialRotation);
+    testimonialSlider.addEventListener('mouseleave', startTestimonialRotation);
+}
 
-testimonialSlider.addEventListener('mouseleave', () => {
-    slideInterval = setInterval(autoSlide, 5000);
+// Animaciones SVG
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para animar SVGs
+    function animateSVGs() {
+        const svgs = document.querySelectorAll('.animated-svg');
+        
+        svgs.forEach(svg => {
+            // Añadir clase para iniciar animación cuando es visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        svg.classList.add('svg-animate');
+                        // Dejar de observar después de animar
+                        observer.unobserve(svg);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            observer.observe(svg);
+        });
+    }
+    
+    // Iniciar animaciones SVG
+    animateSVGs();
 });
 
 // Cookie banner

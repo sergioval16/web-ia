@@ -121,7 +121,3 @@ GitHub Pages actualizará automáticamente tu sitio web después de unos minutos
 - Los colores principales se pueden modificar en las variables CSS al inicio del archivo `styles.css`
 - Las imágenes se pueden reemplazar en la carpeta `img/`
 - El contenido se puede editar directamente en el archivo `index.html`
-
-## Inspirado en
-
-Este diseño está inspirado en la web de Thoughtly (https://www.thoughtly.com/), pero con un tema oscuro y personalizado para INUVIA.
