@@ -1344,26 +1344,15 @@ footer {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(10, 10, 15, 0.95), rgba(15, 15, 25, 0.95)), url('../img/grid-pattern.png');
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
 }
 
-.process::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 50%, rgba(109, 40, 217, 0.1), transparent 30%),
-                radial-gradient(circle at 70% 20%, rgba(16, 185, 129, 0.1), transparent 30%);
-    pointer-events: none;
-}
-
-.process .section-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 80px;
-    position: relative;
-    z-index: 2;
+.process .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .process-timeline {
@@ -1372,6 +1361,10 @@ footer {
     justify-content: space-between;
     margin-top: 50px;
     min-height: 800px;
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .timeline-line {
@@ -1396,6 +1389,7 @@ footer {
     gap: 120px;
     position: relative;
     z-index: 2;
+    padding: 0 20px;
 }
 
 .process-left {
