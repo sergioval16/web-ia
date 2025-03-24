@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .circle { animation: pulse 3s infinite alternate ease-in-out; }
+    .small-dot { animation: float 4s infinite alternate ease-in-out; }
+    .connector { animation: dash 5s infinite; }
+    .node { animation: glow 2s infinite alternate; }
+    .text-line { animation: fadeIn 3s infinite alternate; }
+    .gear { animation: rotate 10s linear infinite; }
+    .gear-small { animation: rotate 8s linear infinite reverse; }
+    .data-flow { animation: flow 3s infinite; }
+    
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      100% { transform: scale(1.05); opacity: 1; }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+    
+    @keyframes dash {
+      0% { stroke-dashoffset: 300; }
+      100% { stroke-dashoffset: 0; }
+    }
+    
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 2px rgba(139, 92, 246, 0.5)); }
+      100% { filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.8)); }
+    }
+    
+    @keyframes fadeIn {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes flow {
+      0% { stroke-dashoffset: 100; opacity: 0.3; }
+      100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+  </style>
+  
+  <!-- Background Elements -->
+  <circle cx="200" cy="200" r="150" class="circle" fill="url(#gradient1)" opacity="0.1"/>
+  <circle cx="200" cy="200" r="120" class="circle" fill="url(#gradient2)" opacity="0.15" style="animation-delay: 0.5s"/>
+  
+  <!-- Central System -->
+  <g class="node" style="animation-delay: 0.3s">
+    <circle cx="200" cy="200" r="25" fill="#8B5CF6"/>
+    <circle cx="200" cy="200" r="15" fill="#10B981"/>
+    <text x="200" y="204" text-anchor="middle" fill="white" font-size="10" font-family="Arial">ERP</text>
+  </g>
+  
+  <!-- Gears representing automation -->
+  <g class="gear" transform="translate(200, 200)">
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="5,5"/>
+    <path d="M0,-45 L5,-35 L15,-38 L18,-28 L28,-25 L25,-15 L35,-10 L30,0 L35,10 L25,15 L28,25 L18,28 L15,38 L5,35 L0,45 L-5,35 L-15,38 L-18,28 L-28,25 L-25,15 L-35,10 L-30,0 L-35,-10 L-25,-15 L-28,-25 L-18,-28 L-15,-38 L-5,-35 Z" fill="none" stroke="#8B5CF6" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Subsystems -->
+  <g class="node" style="animation-delay: 0s">
+    <circle cx="100" cy="120" r="20" fill="#8B5CF6"/>
+    <circle cx="100" cy="120" r="12" fill="#10B981"/>
+    <text x="100" y="124" text-anchor="middle" fill="white" font-size="8" font-family="Arial">CRM</text>
+  </g>
+  
+  <g class="node" style="animation-delay: 0.6s">
+    <circle cx="300" cy="120" r="20" fill="#8B5CF6"/>
+    <circle cx="300" cy="120" r="12" fill="#10B981"/>
+    <text x="300" y="124" text-anchor="middle" fill="white" font-size="8" font-family="Arial">HR</text>
+  </g>
+  
+  <g class="node" style="animation-delay: 0.9s">
+    <circle cx="100" cy="280" r="20" fill="#8B5CF6"/>
+    <circle cx="100" cy="280" r="12" fill="#10B981"/>
+    <text x="100" y="284" text-anchor="middle" fill="white" font-size="8" font-family="Arial">SCM</text>
+  </g>
+  
+  <g class="node" style="animation-delay: 1.2s">
+    <circle cx="300" cy="280" r="20" fill="#8B5CF6"/>
+    <circle cx="300" cy="280" r="12" fill="#10B981"/>
+    <text x="300" y="284" text-anchor="middle" fill="white" font-size="8" font-family="Arial">FIN</text>
+  </g>
+  
+  <!-- Small gears representing automation in subsystems -->
+  <g class="gear-small" transform="translate(100, 120)">
+    <path d="M0,-15 L2,-12 L5,-13 L6,-10 L9,-9 L8,-6 L11,-4 L10,0 L11,4 L8,6 L9,9 L6,10 L5,13 L2,12 L0,15 L-2,12 L-5,13 L-6,10 L-9,9 L-8,6 L-11,4 L-10,0 L-11,-4 L-8,-6 L-9,-9 L-6,-10 L-5,-13 L-2,-12 Z" fill="none" stroke="#10B981" stroke-width="1"/>
+  </g>
+  
+  <g class="gear-small" transform="translate(300, 120)">
+    <path d="M0,-15 L2,-12 L5,-13 L6,-10 L9,-9 L8,-6 L11,-4 L10,0 L11,4 L8,6 L9,9 L6,10 L5,13 L2,12 L0,15 L-2,12 L-5,13 L-6,10 L-9,9 L-8,6 L-11,4 L-10,0 L-11,-4 L-8,-6 L-9,-9 L-6,-10 L-5,-13 L-2,-12 Z" fill="none" stroke="#10B981" stroke-width="1"/>
+  </g>
+  
+  <g class="gear-small" transform="translate(100, 280)">
+    <path d="M0,-15 L2,-12 L5,-13 L6,-10 L9,-9 L8,-6 L11,-4 L10,0 L11,4 L8,6 L9,9 L6,10 L5,13 L2,12 L0,15 L-2,12 L-5,13 L-6,10 L-9,9 L-8,6 L-11,4 L-10,0 L-11,-4 L-8,-6 L-9,-9 L-6,-10 L-5,-13 L-2,-12 Z" fill="none" stroke="#10B981" stroke-width="1"/>
+  </g>
+  
+  <g class="gear-small" transform="translate(300, 280)">
+    <path d="M0,-15 L2,-12 L5,-13 L6,-10 L9,-9 L8,-6 L11,-4 L10,0 L11,4 L8,6 L9,9 L6,10 L5,13 L2,12 L0,15 L-2,12 L-5,13 L-6,10 L-9,9 L-8,6 L-11,4 L-10,0 L-11,-4 L-8,-6 L-9,-9 L-6,-10 L-5,-13 L-2,-12 Z" fill="none" stroke="#10B981" stroke-width="1"/>
+  </g>
+  
+  <!-- Connectors with data flow -->
+  <path class="connector" d="M120 120L180 180" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5"/>
+  <path class="data-flow" d="M120 120L180 180" stroke="#10B981" stroke-width="1" stroke-dasharray="2,4" stroke-dashoffset="100"/>
+  
+  <path class="connector" d="M220 180L280 120" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" style="animation-delay: 0.2s"/>
+  <path class="data-flow" d="M220 180L280 120" stroke="#10B981" stroke-width="1" stroke-dasharray="2,4" stroke-dashoffset="100" style="animation-delay: 0.2s"/>
+  
+  <path class="connector" d="M220 220L280 280" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" style="animation-delay: 0.4s"/>
+  <path class="data-flow" d="M220 220L280 280" stroke="#10B981" stroke-width="1" stroke-dasharray="2,4" stroke-dashoffset="100" style="animation-delay: 0.4s"/>
+  
+  <path class="connector" d="M120 280L180 220" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" style="animation-delay: 0.6s"/>
+  <path class="data-flow" d="M120 280L180 220" stroke="#10B981" stroke-width="1" stroke-dasharray="2,4" stroke-dashoffset="100" style="animation-delay: 0.6s"/>
+  
+  <!-- Data packets -->
+  <circle cx="150" cy="150" r="4" class="small-dot" fill="#10B981"/>
+  <circle cx="250" cy="150" r="4" class="small-dot" fill="#10B981" style="animation-delay: 0.3s"/>
+  <circle cx="250" cy="250" r="4" class="small-dot" fill="#10B981" style="animation-delay: 0.6s"/>
+  <circle cx="150" cy="250" r="4" class="small-dot" fill="#10B981" style="animation-delay: 0.9s"/>
+  
+  <!-- Data visualization elements -->
+  <g class="text-line" transform="translate(130, 140)">
+    <line x1="0" y1="0" x2="10" y2="0" stroke="#10B981" stroke-width="1"/>
+    <line x1="0" y1="3" x2="8" y2="3" stroke="#10B981" stroke-width="1"/>
+    <line x1="0" y1="6" x2="12" y2="6" stroke="#10B981" stroke-width="1"/>
+  </g>
+  
+  <g class="text-line" transform="translate(250, 140)">
+    <line x1="0" y1="0" x2="10" y2="0" stroke="#10B981" stroke-width="1"/>
+    <line x1="0" y1="3" x2="8" y2="3" stroke="#10B981" stroke-width="1"/>
+    <line x1="0" y1="6" x2="12" y2="6" stroke="#10B981" stroke-width="1"/>
+  </g>
+  
+  <g class="text-line" transform="translate(250, 250)">
+    <line x1="0" y1="0" x2="10" y2="0" stroke="#10B981" stroke-width="1"/>
+    <line x1="0" y1="3" x2="8" y2="3" stroke="#10B981" stroke-width="1"/>
+    <line x1="0" y1="6" x2="12" y2="6" stroke="#10B981" stroke-width="1"/>
+  </g>
+  
+  <g class="text-line" transform="translate(130, 250)">
+    <line x1="0" y1="0" x2="10" y2="0" stroke="#10B981" stroke-width="1"/>
+    <line x1="0" y1="3" x2="8" y2="3" stroke="#10B981" stroke-width="1"/>
+    <line x1="0" y1="6" x2="12" y2="6" stroke="#10B981" stroke-width="1"/>
+  </g>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+</svg>

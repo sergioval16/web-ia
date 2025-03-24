@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .step-circle { animation: pulse 3s infinite alternate ease-in-out; }
+    .step-icon { animation: rotate 8s linear infinite; }
+    .step-line { animation: grow 4s infinite; }
+    .step-dot { animation: blink 2s infinite alternate; }
+    .step-glow { animation: glow 3s infinite alternate; }
+    
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1.05); opacity: 1; }
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes grow {
+      0% { stroke-dashoffset: 100; }
+      100% { stroke-dashoffset: 0; }
+    }
+    
+    @keyframes blink {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.5)); }
+      100% { filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.8)); }
+    }
+  </style>
+  
+  <!-- Step 1 -->
+  <g class="step-glow" style="animation-delay: 0s">
+    <circle cx="80" cy="100" r="30" class="step-circle" fill="#8B5CF6" opacity="0.2"/>
+    <circle cx="80" cy="100" r="20" fill="#8B5CF6"/>
+    <g class="step-icon">
+      <path d="M80 90 L80 110 M70 100 L90 100" stroke="white" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Step 2 -->
+  <g class="step-glow" style="animation-delay: 0.5s">
+    <circle cx="200" cy="100" r="30" class="step-circle" fill="#8B5CF6" opacity="0.2"/>
+    <circle cx="200" cy="100" r="20" fill="#8B5CF6"/>
+    <g class="step-icon">
+      <path d="M190 100 L210 100 M200 90 L200 110" stroke="white" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Step 3 -->
+  <g class="step-glow" style="animation-delay: 1s">
+    <circle cx="320" cy="100" r="30" class="step-circle" fill="#8B5CF6" opacity="0.2"/>
+    <circle cx="320" cy="100" r="20" fill="#8B5CF6"/>
+    <g class="step-icon">
+      <path d="M310 95 L320 105 L330 95" stroke="white" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Step 4 -->
+  <g class="step-glow" style="animation-delay: 1.5s">
+    <circle cx="320" cy="200" r="30" class="step-circle" fill="#8B5CF6" opacity="0.2"/>
+    <circle cx="320" cy="200" r="20" fill="#8B5CF6"/>
+    <g class="step-icon">
+      <path d="M310 200 L330 200 M320 190 L320 210" stroke="white" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Step 5 -->
+  <g class="step-glow" style="animation-delay: 2s">
+    <circle cx="200" cy="200" r="30" class="step-circle" fill="#8B5CF6" opacity="0.2"/>
+    <circle cx="200" cy="200" r="20" fill="#8B5CF6"/>
+    <g class="step-icon">
+      <path d="M190 195 L200 205 L210 195" stroke="white" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Step 6 -->
+  <g class="step-glow" style="animation-delay: 2.5s">
+    <circle cx="80" cy="200" r="30" class="step-circle" fill="#8B5CF6" opacity="0.2"/>
+    <circle cx="80" cy="200" r="20" fill="#10B981"/>
+    <g class="step-icon">
+      <path d="M70 200 L80 210 L90 190" stroke="white" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Connecting Lines -->
+  <path class="step-line" d="M100 100 L180 100" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" stroke-dashoffset="100"/>
+  <path class="step-line" d="M220 100 L300 100" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" stroke-dashoffset="100" style="animation-delay: 0.5s"/>
+  <path class="step-line" d="M320 120 L320 180" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" stroke-dashoffset="100" style="animation-delay: 1s"/>
+  <path class="step-line" d="M300 200 L220 200" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" stroke-dashoffset="100" style="animation-delay: 1.5s"/>
+  <path class="step-line" d="M180 200 L100 200" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" stroke-dashoffset="100" style="animation-delay: 2s"/>
+  
+  <!-- Dots -->
+  <circle cx="140" cy="100" r="4" class="step-dot" fill="#10B981"/>
+  <circle cx="260" cy="100" r="4" class="step-dot" fill="#10B981" style="animation-delay: 0.3s"/>
+  <circle cx="320" cy="150" r="4" class="step-dot" fill="#10B981" style="animation-delay: 0.6s"/>
+  <circle cx="260" cy="200" r="4" class="step-dot" fill="#10B981" style="animation-delay: 0.9s"/>
+  <circle cx="140" cy="200" r="4" class="step-dot" fill="#10B981" style="animation-delay: 1.2s"/>
+  
+  <!-- Background Elements -->
+  <circle cx="200" cy="150" r="120" fill="url(#processGradient)" opacity="0.05"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="processGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+</svg>
